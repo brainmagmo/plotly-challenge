@@ -1,7 +1,8 @@
 //D3
 //Bootstrap
 
-var dropDown = d3.select("#selDataset")
+var dropDown = d3.select("#selDataset").node();
+var mdDisplay = d3.select("#sample-metadata").node();
 
 d3.json("samples.json").then(function(jsonData) {
    
@@ -20,6 +21,12 @@ d3.json("samples.json").then(function(jsonData) {
     function getMetaData(idN) {
         return metadata.find(meta => meta.id == idN);//comparing int to string
     }
-
-    console.log(getMetaData(idNum));
+    var md = getMetaData(idNum);
+    var subjectMDtext = "";
+    for(var key in md) {
+        console.log(key);
+        subjectMDtext += key + ": " + md[key] + "<br>";
+    };
+    mdDisplay.text(subjectMDtext);
+    console.log("end of test");
 });
