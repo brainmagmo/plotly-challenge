@@ -23,3 +23,5 @@ var idNum = names[0];
 function getMetaData(idN) {
     return metadata.find(meta => meta.id === idN);
 }
+
+console.log(getMetaData(idNum));
