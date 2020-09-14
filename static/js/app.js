@@ -2,9 +2,8 @@
 //Bootstrap
 
 d3.json("samples.json").then(function(jsonData) {
-   
+   //populate the drop down menu
     var dropDown = d3.select("#selDataset");
-    var mdDisplay = d3.select("#sample-metadata");
 
     jsonData.names.forEach(name => {
         //console.log(name);
@@ -16,6 +15,9 @@ d3.json("samples.json").then(function(jsonData) {
     var names = jsonData.names;
     var metadata = jsonData.metadata;
     //var samples = jsonData.samples;
+
+    
+    var mdDisplay = d3.select("#sample-metadata");
 
     var idNum = names[0];
     function getMetaData(idN) {
