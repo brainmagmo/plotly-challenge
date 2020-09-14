@@ -8,7 +8,7 @@ d3.json("samples.json").then(function(data) {
 
     var dropDown = d3.select("#selDataset")
     
-    name.forEach(name => {
+    names.forEach(name => {
         console.log(name);
         var option = dropDown.append("option");
         option.text(name).attr("value", name);
