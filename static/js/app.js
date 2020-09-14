@@ -18,7 +18,7 @@ d3.json("samples.json").then(function(jsonData) {
 
     var idNum = names[0];
     function getMetaData(idN) {
-        return metadata.find(meta => meta.id === idN);
+        return metadata.find(meta => meta.id == idN);//comparing int to string
     }
 
     console.log(getMetaData(idNum));
