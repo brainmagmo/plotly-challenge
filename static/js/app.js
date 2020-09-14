@@ -29,6 +29,6 @@ d3.json("samples.json").then(function(jsonData) {
         console.log(key);
         subjectMDtext += key + ": " + md[key] + "<br>";
     };
-    mdDisplay.text(subjectMDtext);
+    mdDisplay.html(subjectMDtext);
     console.log("end of test");
 });
