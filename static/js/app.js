@@ -1,11 +1,11 @@
 //D3
 //Bootstrap
 
-var dropDown = d3.select("#selDataset").node();
-var mdDisplay = d3.select("#sample-metadata").node();
-
 d3.json("samples.json").then(function(jsonData) {
    
+    var dropDown = d3.select("#selDataset");
+    var mdDisplay = d3.select("#sample-metadata");
+
     jsonData.names.forEach(name => {
         //console.log(name);
         var option = dropDown.append("option");
