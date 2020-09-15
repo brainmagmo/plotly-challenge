@@ -26,7 +26,7 @@ d3.json("samples.json").then(function(jsonData) {
     var md = getMetaData(idNum);
     var subjectMDtext = "";
     for(var key in md) {
-        console.log(key);
+        //console.log(key);
         subjectMDtext += key + ": " + md[key] + "<br>";
     };
     mdDisplay.html(subjectMDtext);
