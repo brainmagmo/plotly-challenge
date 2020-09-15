@@ -3,22 +3,28 @@
 
 d3.json("samples.json").then(function(jsonData) {
    //populate the drop down menu
-    var dropDown = d3.select("#selDataset");
-
-    jsonData.names.forEach(name => {
-        //console.log(name);
-        var option = dropDown.append("option");
-        option.text(name).attr("value", name);
-    });
-
-        
+    //useful variable
     var names = jsonData.names;
     var metadata = jsonData.metadata;
     //var samples = jsonData.samples;
 
+    //var dropDown = d3.select("#selDataset");
+    d3.select("#selDataset")
+        .data(names)
+        .enter()
+        .append("option")
+        .text((d)=>d)
+        .attr("value",(d)=>d);
+    // jsonData.names.forEach(name => {
+    //     //console.log(name);
+    //     var option = dropDown.append("option");
+    //     option.text(name).attr("value", name);
+    // });
     
-    var mdDisplay = d3.select("#sample-metadata");
 
+
+    //fill default metadata panel
+    var mdDisplay = d3.select("#sample-metadata");
     var idNum = names[0];
     function getMetaData(idN) {
         return metadata.find(meta => meta.id == idN);//comparing int to string
@@ -30,5 +36,16 @@ d3.json("samples.json").then(function(jsonData) {
         subjectMDtext += key + ": " + md[key] + "<br>";
     };
     mdDisplay.html(subjectMDtext);
+
+    //generate bar chart
+
+    //generate bubble cahrt
+
+
     console.log("end of test");
 });
+
+
+//event handler function
+
+//event listener
