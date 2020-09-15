@@ -56,7 +56,7 @@ d3.json("samples.json").then(function(jsonData) {
         type: "bar",
         orientation: "h"
     };
-
+    console.log(trace1.y);
     // data
     var data = [trace1];
 
