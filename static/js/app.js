@@ -50,7 +50,7 @@ d3.json("samples.json").then(function(jsonData) {
     // Trace1 for the Greek Data
     var trace1 = {
         x: sample.sample_values.slice(0,10).reverse(),
-        y: sample.otu_ids.slice(0,10).reverse(),
+        y: sample.otu_ids.slice(0,10).reverse().map(toString),
         text: sample.otu_labels.slice(0,10).reverse(),
         name: "Samples from " + idNum,
         type: "bar",
