@@ -44,7 +44,7 @@ d3.json("samples.json").then(function(jsonData) {
         // Sort the data by Greek search results
     //var sortedByGreekSearch = data.sort((a, b) => b.greekSearchResults - a.greekSearchResults);
     var samples = jsonData.samples
-                            .find(samp => samp.id == idN)
+                            .find(samp => samp.id == idNum)
                             ;
     console.log(samples);
     // Trace1 for the Greek Data
@@ -52,7 +52,7 @@ d3.json("samples.json").then(function(jsonData) {
         x: samples.map(object => object.sample_values.slice(0,10).reverse()),
         y: samples.map(object => object.otu_ids.slice(0,10).reverse()),
         text: samples.map(object => object.otu_labels.slice(0,10).reverse()),
-        name: "Samples from " + idN,
+        name: "Samples from " + idNum,
         type: "bar",
         orientation: "h"
     };
@@ -63,12 +63,12 @@ d3.json("samples.json").then(function(jsonData) {
     // Apply the group bar mode to the layout
     var layout = {
     title: "Belly Button Sample",
-        margin: {
-            l: 100,
-            r: 100,
-            t: 100,
-            b: 100
-        }
+        // margin: {
+        //     l: 100,
+        //     r: 100,
+        //     t: 100,
+        //     b: 100
+        // }
     };
 
     // Render the plot to the div tag with id "plot"
