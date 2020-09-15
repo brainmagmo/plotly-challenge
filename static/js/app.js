@@ -25,7 +25,9 @@ d3.json("samples.json").then(function(jsonData) {
 
     //fill default metadata panel
     var mdDisplay = d3.select("#sample-metadata");
-    var idNum = names[0];
+    var idNum = d3.select("#selDataset").property("value");
+    console.log("idnum: " + idNum);
+    //var idNum = names[0];
     function getMetaData(idN) {
         return metadata.find(meta => meta.id == idN);//comparing int to string
     }
