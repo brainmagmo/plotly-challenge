@@ -45,15 +45,13 @@ d3.json("samples.json").then(function(jsonData) {
     //var sortedByGreekSearch = data.sort((a, b) => b.greekSearchResults - a.greekSearchResults);
     var samples = jsonData.samples
                             .find(samp => samp.id == idN)
-                            .slice(0,10)
-                            .reverse()
                             ;
-
+    console.log(samples);
     // Trace1 for the Greek Data
     var trace1 = {
-        x: samples.map(object => object.sample_values),
-        y: samples.map(object => object.otu_ids),
-        text: samples.map(object => object.otu_ids),
+        x: samples.map(object => object.sample_values.slice(0,10).reverse()),
+        y: samples.map(object => object.otu_ids.slice(0,10).reverse()),
+        text: samples.map(object => object.otu_ids.slice(0,10).reverse()),
         name: "Samples from " + idN,
         type: "bar",
         orientation: "h"
