@@ -10,6 +10,7 @@ d3.json("samples.json").then(function(jsonData) {
 
     //var dropDown = d3.select("#selDataset");
     d3.select("#selDataset")
+        .selectAll("option")
         .data(names)
         .enter()
         .append("option")
