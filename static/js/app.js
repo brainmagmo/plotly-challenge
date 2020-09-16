@@ -7,7 +7,7 @@ d3.json("samples.json").then(function(jsonData) {
     var names = jsonData.names;
     var metadata = jsonData.metadata;
     //var samples = jsonData.samples;
-
+    //********************************************************************/
     //populate the drop down menu
     d3.select("#selDataset")
         .selectAll("option")
@@ -18,6 +18,7 @@ d3.json("samples.json").then(function(jsonData) {
         .attr("value",(d)=>d)
         ;
 
+    //********************************************************************/
     //get metadata
     var mdDisplay = d3.select("#sample-metadata");
     var idNum = d3.select("#selDataset").property("value");
@@ -45,13 +46,19 @@ d3.json("samples.json").then(function(jsonData) {
     var sample = jsonData.samples
         .find(samp => samp.id == idNum)
         ;
+
+    var values = sample.sample_values.slice(0,10).reverse();
+    var otus = sample.otu_ids.slice(0,10).reverse();
+    var labels = otus.map(num => "OTU " + num.toString(10));
+    var hoverText = sample.otu_labels.slice(0,10).reverse();
     
+    //********************************************************************/
     // Trace1 for the Sample Data for bar chart
     var trace1 = {
-        x: sample.sample_values.slice(0,10).reverse(),
-        y: sample.otu_ids.slice(0,10).reverse().map(num => "OTU " + num.toString(10)),
-        text: sample.otu_labels.slice(0,10).reverse(),
-        name: "Samples from " + idNum,
+        x: values,
+        y: labels,
+        text: hoverText,
+
         type: "bar",
         orientation: "h"
     };
@@ -65,15 +72,41 @@ d3.json("samples.json").then(function(jsonData) {
 
     // Render the plot to the div tag with id "plot"
     Plotly.newPlot("bar", data1, layout);
+
+    //********************************************************************/
+    /**Create a bubble chart that displays each sample.
+
+    Use otu_ids for the x values.
+
+    Use sample_values for the y values.
+
+    Use sample_values for the marker size.
+
+    Use otu_ids for the marker colors.
+
+    Use otu_labels for the text values. */
+    var maxotu = Math.max.apply(null, otus);
+    var minotu = Math.min.apply(null, otus);
+    console.log("max: " + maxotu + " min: " + minotu);
+    var colors = labels.map(function(num) {
+        var red = 256 * (num - minotu) / (maxotu - minotu);
+        var blue = 256 - red;
+        var green = 125;
+        return rgb(red, green, blue);
+    });
     //generate bubble chart
 
     // Trace2 for the Sample Data for bubble chart
     var trace2 = {
-        x: sample.sample_values.slice(0,10).reverse(),
-        y: sample.otu_ids.slice(0,10).reverse().map(num => "OTU " + num.toString(10)),
-        text: sample.otu_labels.slice(0,10).reverse(),
-        name: "Samples from " + idNum,
-        // type: "bar",
+        x: labels,
+        y: values,
+        text: hoverText,
+
+        mode: 'markers',
+        marker: {
+            size: values,
+            color: rgb(120,120,120)
+        }
         // orientation: "h"
     };
     
