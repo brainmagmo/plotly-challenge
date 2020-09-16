@@ -111,7 +111,7 @@ d3.json("samples.json").then(function(jsonData) {
     };
     
     //data
-    var data2 = [trace1];
+    var data2 = [trace2];
 
     // Render the plot to the div tag with id "plot"
     Plotly.newPlot("bubble", data2, layout);
