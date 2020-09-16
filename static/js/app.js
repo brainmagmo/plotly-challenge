@@ -109,7 +109,7 @@ d3.json("samples.json").then(function(jsonData) {
             //color: 'rgb(120,120,120)'
         }
     };
-    console.log(trace2.marker.size);
+    console.log("size: " + trace2.marker.size);
     //data
     var data2 = [trace2];
 
