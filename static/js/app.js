@@ -100,14 +100,13 @@ d3.json("samples.json").then(function(jsonData) {
     var trace2 = {
         x: labels,
         y: values,
-        text: hoverText,
+        //text: hoverText,
 
         mode: 'markers',
         marker: {
-            size: values,
-            color: rgb(120,120,120)
+            size: values//,
+            //color: rgb(120,120,120)
         }
-        // orientation: "h"
     };
     
     //data
