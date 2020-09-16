@@ -101,15 +101,15 @@ d3.json("samples.json").then(function(jsonData) {
     var trace2 = {
         x: labels,
         y: values,
-        text: hoverText,
+        //text: hoverText,
 
         mode: 'markers',
         marker: {
-            size: values.map((val)=>10*Math.round(Math.sqrt(val)))//,
+            size: values.map((val)=>100*Math.round(Math.sqrt(val)))//,
             //color: 'rgb(120,120,120)'
         }
     };
-    
+    console.log(trace2.marker.size);
     //data
     var data2 = [trace2];
 
