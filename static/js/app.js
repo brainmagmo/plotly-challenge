@@ -67,7 +67,7 @@ d3.json("samples.json").then(function(jsonData) {
     var data1 = [trace1];
 
     var layout = {
-    title: "Belly Button Sample",
+        title: "Belly Button Sample",
     };
 
     // Render the plot to the div tag with id "plot"
@@ -105,11 +105,11 @@ d3.json("samples.json").then(function(jsonData) {
 
         mode: 'markers',
         marker: {
-            size: values.map((val)=>100*Math.round(Math.sqrt(val)))//,
-            //color: 'rgb(120,120,120)'
+            size: values.map((val)=>10*Math.round(Math.sqrt(val))),
+            color: 'black'
         }
     };
-    console.log("size: " + trace2.marker.size);
+    console.log(trace2.marker.size);
     //data
     var data2 = [trace2];
 
