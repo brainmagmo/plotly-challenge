@@ -88,7 +88,7 @@ d3.json("samples.json").then(function(jsonData) {
     var maxotu = Math.max.apply(null, otus);
     var minotu = Math.min.apply(null, otus);
     console.log("max: " + maxotu + " min: " + minotu);
-    var colors = labels.map(function(num) {
+    var colors = otus.map(function(num) {
         var red = 256 * (num - minotu) / (maxotu - minotu);
         var blue = 256 - red;
         var green = 125;
@@ -106,7 +106,7 @@ d3.json("samples.json").then(function(jsonData) {
         mode: 'markers',
         marker: {
             size: values,
-            color: rgb(120,120,120)
+            color: 'rgb(120,120,120)'
         }
     };
     
