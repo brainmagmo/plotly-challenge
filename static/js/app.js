@@ -105,8 +105,8 @@ d3.json("samples.json").then(function(jsonData) {
 
         mode: 'markers',
         marker: {
-            size: values,
-            color: 'rgb(120,120,120)'
+            size: values.map((val)=>10*Math.sqrt(val))//,
+            //color: 'rgb(120,120,120)'
         }
     };
     
