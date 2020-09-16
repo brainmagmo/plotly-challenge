@@ -87,11 +87,11 @@ d3.json("samples.json").then(function(jsonData) {
     Use otu_labels for the text values. */
     var maxotu = Math.max.apply(null, otus);
     var minotu = Math.min.apply(null, otus);
-    console.log("max: " + maxotu + " min: " + minotu);
+    var midotu = (maxotu + minotu) / 2;
     var colors = otus.map(function(num) {
-        var red = Math.round(256 * (num - minotu) / (maxotu - minotu));
-        var blue = 256 - red;
-        var green = 125;
+        var red = (num > midotu) ? 0 : Math.round(256 * (midotu - num) / (midotu - minotu));
+        var blue = (num < midotu) ? 0 : Math.round(256 * (num - midotu) / (maxotu - midotu));
+        var green = (num > midotu) ? Math.round(256 * (maxotu - num) / (maxotu - midotu)) : Math.round(256 * (num - minotu) / (midotu - minotu));
         return `rgb(${red}, ${green}, ${blue})`;
     });
     console.log(colors);
