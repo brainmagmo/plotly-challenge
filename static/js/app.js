@@ -99,14 +99,14 @@ d3.json("samples.json").then(function(jsonData) {
 
     // Trace2 for the Sample Data for bubble chart
     var trace2 = {
-        x: labels,
+        x: otus,
         y: values,
-        //text: hoverText,
+        text: hoverText,
 
         mode: 'markers',
         marker: {
-            size: values.map((val)=>10*Math.round(Math.sqrt(val))),
-            color: 'black'
+            size: values,//.map((val)=>10*Math.round(Math.sqrt(val))),
+            color: colors//'black'
         }
     };
     console.log(trace2.marker.size);
