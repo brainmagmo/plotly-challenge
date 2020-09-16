@@ -89,7 +89,7 @@ d3.json("samples.json").then(function(jsonData) {
     var minotu = Math.min.apply(null, otus);
     console.log("max: " + maxotu + " min: " + minotu);
     var colors = otus.map(function(num) {
-        var red = 256 * (num - minotu) / (maxotu - minotu);
+        var red = Math.round(256 * (num - minotu) / (maxotu - minotu));
         var blue = 256 - red;
         var green = 125;
         return `rgb(${red}, ${green}, ${blue})`;
@@ -105,7 +105,7 @@ d3.json("samples.json").then(function(jsonData) {
 
         mode: 'markers',
         marker: {
-            size: values.map((val)=>10*Math.sqrt(val))//,
+            size: values.map((val)=>10*Math.round(Math.sqrt(val)))//,
             //color: 'rgb(120,120,120)'
         }
     };
