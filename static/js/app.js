@@ -92,20 +92,21 @@ d3.json("samples.json").then(function(jsonData) {
         var red = 256 * (num - minotu) / (maxotu - minotu);
         var blue = 256 - red;
         var green = 125;
-        return rgb(red, green, blue);
+        return `rgb(${red}, ${green}, ${blue})`;
     });
+    console.log(colors);
     //generate bubble chart
 
     // Trace2 for the Sample Data for bubble chart
     var trace2 = {
         x: labels,
         y: values,
-        //text: hoverText,
+        text: hoverText,
 
         mode: 'markers',
         marker: {
-            size: values//,
-            //color: rgb(120,120,120)
+            size: values,
+            color: rgb(120,120,120)
         }
     };
     
