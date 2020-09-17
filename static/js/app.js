@@ -24,27 +24,27 @@ d3.json("samples.json").then(function(jsonData) {
         .attr("value",(d)=>d)
         ;
 
-    Plotly.newPlot("bar", [{
-        x: [1],
-        y: ["OTU 1"],
-        text: ["hoverText"],
+    // Plotly.newPlot("bar", [{
+    //     x: [1],
+    //     y: ["OTU 1"],
+    //     text: ["hoverText"],
 
-        type: "bar",
-        orientation: "h"
-    }], layout1);
+    //     type: "bar",
+    //     orientation: "h"
+    // }], layout1);
 
-    // Render the plot to the div tag with id "bubble"
-    Plotly.newPlot("bubble", [{
-        x: [1],
-        y: [1],
-        text: ["hoverText"],
+    // // Render the plot to the div tag with id "bubble"
+    // Plotly.newPlot("bubble", [{
+    //     x: [1],
+    //     y: [1],
+    //     text: ["hoverText"],
 
-        mode: 'markers',
-        marker: {
-            size: [1],
-            color: 'black'
-        }
-    }], layout2);
+    //     mode: 'markers',
+    //     marker: {
+    //         size: [1],
+    //         color: 'black'
+    //     }
+    // }], layout2);
 
     optionChanged()
   
@@ -108,7 +108,7 @@ function optionChanged() {
 
 
         // Render the plot to the div tag with id "bar"
-        Plotly.update("bar", data1, layout1);
+        Plotly.react("bar", data1, layout1);
 
         //********************************************************************/
         //Create a bubble chart that displays each sample.
@@ -144,7 +144,7 @@ function optionChanged() {
 
 
         // Render the plot to the div tag with id "bubble"
-        Plotly.update("bubble", data2, layout2);
+        Plotly.react("bubble", data2, layout2);
     })
     
 };
